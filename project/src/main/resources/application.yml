@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:collaborator
+    url: jdbc:h2:mem:project
     driverClassName: org.h2.Driver
     username: sa
     password: password
@@ -10,10 +10,10 @@ spring:
     console:
       enabled: true
   application:
-    name: collaborator-service
+    name: project-service
 
 server:
-  port: 8080
+  port: 8081
 
 eureka:
   client:
@@ -22,7 +22,3 @@ eureka:
       enabled: true
     serviceUrl:
       defaultZone: http://${eureka.host:localhost}:${eureka.port:8070}/eureka/
-
-feign:
-  hystrix:
-    enabled: true
