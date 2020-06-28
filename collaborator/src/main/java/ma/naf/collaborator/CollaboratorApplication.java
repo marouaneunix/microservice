@@ -1,5 +1,6 @@
 package ma.naf.collaborator;
 
+import feign.hystrix.FallbackFactory;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -98,13 +99,21 @@ interface CollaboratorRepository extends JpaRepository<Collaborator, Long> {
 
 }
 
-@FeignClient(value = "project-service", fallback = HystrixProjectFallback.class)
+@FeignClient(value = "project-service", fallbackFactory = ProjectFallbackFactory.class)
 interface ProjectClient {
 
 	@GetMapping("/projects/name")
 	List<String> getProjectsName();
 }
 
+@Component
+class ProjectFallbackFactory implements FallbackFactory<ProjectClient> {
+
+	@Override
+	public ProjectClient create(Throwable throwable) {
+		return new ProjectClientFallback(throwable);
+	}
+}
 @Component
 class HystrixProjectFallback implements ProjectClient {
 
