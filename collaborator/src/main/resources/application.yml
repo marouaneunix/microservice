@@ -9,20 +9,6 @@ spring:
   h2:
     console:
       enabled: true
-  application:
-    name: collaborator-service
 
 server:
   port: 8080
-
-eureka:
-  client:
-    register-with-eureka: true
-    healthcheck:
-      enabled: true
-    serviceUrl:
-      defaultZone: http://${eureka.host:localhost}:${eureka.port:8070}/eureka/
-
-feign:
-  hystrix:
-    enabled: true

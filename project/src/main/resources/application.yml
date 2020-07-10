@@ -9,16 +9,7 @@ spring:
   h2:
     console:
       enabled: true
-  application:
-    name: project-service
 
 server:
   port: 8081
 
-eureka:
-  client:
-    register-with-eureka: true
-    healthcheck:
-      enabled: true
-    serviceUrl:
-      defaultZone: http://${eureka.host:localhost}:${eureka.port:8070}/eureka/

@@ -36,10 +36,8 @@ public class CollaboratorApplication {
 
 	@Bean
 	CommandLineRunner commandLineRunner(CollaboratorRepository collaboratorRepository) {
-		return strings -> {
-			Stream.of("marouane", "ayoub", "fati", "khaoula", "chaimae")
-					.forEach(firstName -> collaboratorRepository.save(new Collaborator(firstName, "last_"+firstName)));
-		};
+		return strings -> Stream.of("marouane", "ayoub", "fati", "khaoula", "chaimae")
+				.forEach(firstName -> collaboratorRepository.save(new Collaborator(firstName, "last_"+firstName)));
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(CollaboratorApplication.class, args);

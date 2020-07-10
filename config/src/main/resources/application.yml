@@ -1,0 +1,18 @@
+server:
+  port: 8050
+spring:
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: ${HOME}/IdeaProjects/config-db
+
+eureka:
+  client:
+    register-with-eureka: true
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://${eureka.host:localhost}:${eureka.port:8070}/eureka/
