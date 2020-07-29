@@ -17,6 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -59,7 +60,8 @@ class CollaboratorResource {
 	}
 
 	@GetMapping()
-	public ResponseEntity<List<Collaborator>> getCollaborators() {
+	public ResponseEntity<List<Collaborator>> getCollaborators(@RequestHeader("x-location") String location) {
+		System.out.println(location);
 		return ResponseEntity.ok(collaboratorRepository.findAll());
 	}
 
