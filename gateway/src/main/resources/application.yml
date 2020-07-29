@@ -1,13 +1,2 @@
-spring:
-  application:
-    name: gateway-service
-zuul:
-  routes:
-    collaborator-route:
-      path: /collaborator-service/**
-      url: http://localhost:8080
-    project-route:
-      path: /project-service/**
-      url: http://localhost:8081
 server:
   port: 8071
